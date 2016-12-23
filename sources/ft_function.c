@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 11:39:07 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/23 11:39:09 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/23 14:11:55 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ int	ft_atoi_spe(char *str, int pos)
   while (str[n] == ' ' || str[n] == '\t')
     n = n + 1;
   if (str[n] == '-')
-    {
-      neg = -1;
-      n = n + 1;
-    }
+	  return (-1);
   while (str[n] >= '0' && str[n] <= '9')
     res = (res * 10) + (str[n++] - '0');
   return (res * neg);

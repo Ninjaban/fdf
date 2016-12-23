@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 11:38:52 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/23 14:02:26 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/23 14:33:42 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,8 @@ int			ft_loop_hook(t_mlx *mlx)
 	return (0);
 }
 
-#include <stdio.h>
-
-int			ft_hook(int key, t_mlx *mlx)
+int			ft_hook(int key)
 {
-	(void)mlx;
-	printf("%d\n", key);
 	if (key == 65307)
 		exit(0);
 	return (0);
@@ -77,8 +73,7 @@ int			ft_fdf(t_map *map)
 	if (ft_fdf_vertical(map, &mlx, draw) == -1)
 		return (-1);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
-	mlx_key_hook(mlx->mlx, &ft_hook, mlx);
-	mlx_loop_hook(mlx->mlx, &ft_loop_hook, mlx);
+	mlx_hook(mlx->win, 2, 3, &ft_hook, NULL);
 	mlx_loop(mlx->mlx);
 	return (0);
 }

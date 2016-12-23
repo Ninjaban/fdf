@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 11:39:29 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/23 13:55:06 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/23 14:49:51 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ int			ft_parsing(char *str)
 		}
 		if (str[n] >= '0' && str[n] <= '9')
 		{
-		    map->tab[y][x++] = ft_atoi_spe(str, n);
+		    if ((map->tab[y][x++] = ft_atoi_spe(str, n)) == -1)
+				return (-1);
 		    while (str[n] >= '0' && str[n] <= '9')
 				n = n + 1;
 		}

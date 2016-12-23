@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 11:42:29 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/23 13:29:32 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/23 14:44:43 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # define TRUE 1
 # define WIDTH 1920
 # define HEIGHT 1080
-
-# define ABS(x) (x >= 0) ? x : -x
 
 # include <stdlib.h>
 # include <unistd.h>

@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/28 09:10:05 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/23 13:59:40 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/23 14:34:04 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ t_mlx	*ft_init_mlx(void)
 		return (NULL);
 	return (mlx);
 }
-
-#include <stdio.h>
 
 t_draw		*ft_init_draw(t_map *map)
 {
