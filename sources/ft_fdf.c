@@ -1,56 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fdf.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/12/23 11:38:52 by jcarra            #+#    #+#             */
+/*   Updated: 2016/12/23 14:02:26 by jcarra           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "tools.h"
 
-int	ft_fdf_horizon(t_map *map, t_mlx *mlx, t_draw *draw)
+static int	ft_fdf_horizon(t_map *map, t_mlx **mlx, t_draw *draw)
 {
-  int	x;
-  int	y;
+	int		x;
+	int		y;
 
-  y = 0;
-  while (y < map->line)
+	y = 0;
+	while (y < map->line)
     {
-      x = -1;
-      while (++x < map->column - 1)
-	if (aff_line(mlx, draw->tab[y][x], draw->tab[y][x + 1]) == 1)
-	  return (-1);
-      y = y + 1;
+		x = -1;
+		while (++x < map->column - 1)
+			if (aff_line(&(*mlx), draw->tab[y][x], draw->tab[y][x + 1]) == 1)
+				return (-1);
+		y = y + 1;
     }
-  return (0);
+	return (0);
 }
 
-int	ft_fdf_vertical(t_map *map, t_mlx *mlx, t_draw *draw)
+static int	ft_fdf_vertical(t_map *map, t_mlx **mlx, t_draw *draw)
 {
-  int	x;
-  int	y;
+	int		x;
+	int		y;
 
-  y = 0;
-  while (y < map->line - 1)
+	y = 0;
+	while (y < map->line - 1)
     {
-      x = -1;
-      while (++x < map->column)
-	if (aff_line(mlx, draw->tab[y][x], draw->tab[y + 1][x]) == 1)
-	  return (-1);
-      y = y + 1;
+		x = -1;
+		while (++x < map->column)
+			if (aff_line(&(*mlx), draw->tab[y][x], draw->tab[y + 1][x]) == 1)
+				return (-1);
+		y = y + 1;
     }
-  return (0);
+	return (0);
 }
 
-int	ft_fdf(t_map *map)
+int			ft_loop_hook(t_mlx *mlx)
 {
-  t_mlx *mlx;
-  t_draw *draw;
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	return (0);
+}
 
-  if ((mlx = ft_init_mlx()) == NULL)
-    return (-1);
-  if ((draw = ft_init_draw(map)) == NULL)
-    return (-1);
+#include <stdio.h>
 
-  if (ft_fdf_horizon(map, mlx, draw) == -1)
-    return (-1);
+int			ft_hook(int key, t_mlx *mlx)
+{
+	(void)mlx;
+	printf("%d\n", key);
+	if (key == 65307)
+		exit(0);
+	return (0);
+}
 
-  if (ft_fdf_vertical(map, mlx, draw) == -1)
-    return (-1);
-  while (42)
-    ;
-  //  ft_draw_image(mlx);
-  return (0);
+int			ft_fdf(t_map *map)
+{
+	t_mlx	*mlx;
+	t_draw	*draw;
+
+	if ((mlx = ft_init_mlx()) == NULL)
+		return (-1);
+	if ((draw = ft_init_draw(map)) == NULL)
+		return (-1);
+	if (ft_fdf_horizon(map, &mlx, draw) == -1)
+		return (-1);
+	if (ft_fdf_vertical(map, &mlx, draw) == -1)
+		return (-1);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	mlx_key_hook(mlx->mlx, &ft_hook, mlx);
+	mlx_loop_hook(mlx->mlx, &ft_loop_hook, mlx);
+	mlx_loop(mlx->mlx);
+	return (0);
 }

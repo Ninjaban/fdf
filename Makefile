@@ -6,7 +6,7 @@
 #    By: jcarra <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/28 08:57:25 by jcarra            #+#    #+#              #
-#    Updated: 2016/07/28 08:59:49 by jcarra           ###   ########.fr        #
+#    Updated: 2016/12/23 12:33:42 by jcarra           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -26,9 +26,9 @@ DIRINC		=	include/
 SRCS		=	$(SRC:%=$(DIRSRC)%)
 OBJS		=	$(SRC:.c=.o)
 
-CFLAGS		=	-Wall -Wextra -Werror -I./$(DIRINC) -g3
+CFLAGS		=	-Wall -Wextra -I./$(DIRINC) -g3
 
-LDFLAGS		=	-L/usr/lib64 -lmlx -L/usr/lib64/X11 -lXext -lX11
+LDFLAGS		=	-L/usr/X11/lib -L./minilibx -lmlx -lXext -lX11
 
 CC			=	gcc
 RM			=	rm -f
