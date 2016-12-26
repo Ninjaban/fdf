@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 11:39:00 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/26 09:49:43 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/26 09:54:56 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static void	ft_init_px(t_mlx **mlx, t_position *pos1)
 {
 	if (pos1->x < WIDTH && pos1->y < HEIGHT)
 	{
-		(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 2] = 0;
-		(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 1] = 0;
-		(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4)] = 0xFF;
+		(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 2] = COLOR_R;
+		(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 1] = COLOR_G;
+		(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4)] = COLOR_B;
 	}
 }
 

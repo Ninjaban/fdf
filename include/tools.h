@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 11:42:29 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/26 09:29:57 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/26 09:59:11 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 
 # define FALSE 0
 # define TRUE 1
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 2560
+# define HEIGHT 1440
+
+# define COLOR_R 0x6B
+# define COLOR_G 0xC9
+# define COLOR_B 0xFF
 
 # include <stdlib.h>
 # include <unistd.h>
