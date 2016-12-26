@@ -6,14 +6,14 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 11:39:00 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/23 14:44:48 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/26 09:49:43 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
 
 void		ft_init_draw_function(t_draw **draw, t_map *map,
-		      unsigned int incx, unsigned int incy)
+									unsigned int incx, unsigned int incy)
 {
 	int		x1;
 	int		x2;
@@ -23,10 +23,10 @@ void		ft_init_draw_function(t_draw **draw, t_map *map,
 	y1 = HEIGHT * 20 / 100 + ((map->line - 1) * incy);
 	y2 = map->line - 1;
 	while (y2 >= 0)
-    {
+	{
 		x1 = WIDTH * 2 / 100 + ((map->line - 1 - y2) * incx);
 		x2 = -1;
-		while (++x2 < map->column)
+		while (++x2 < (int)map->column)
 		{
 			(*draw)->tab[y2][x2].x = x1;
 			(*draw)->tab[y2][x2].y = y1 - (map->tab[y2][x2] * (*draw)->incup);
@@ -34,14 +34,17 @@ void		ft_init_draw_function(t_draw **draw, t_map *map,
 		}
 		y1 = y1 - incy;
 		y2 = y2 - 1;
-    }
+	}
 }
 
 static void	ft_init_px(t_mlx **mlx, t_position *pos1)
 {
-	(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 2] = 0;
-	(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 1] = 0;
-	(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4)] = 0xFF;
+	if (pos1->x < WIDTH && pos1->y < HEIGHT)
+	{
+		(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 2] = 0;
+		(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 1] = 0;
+		(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4)] = 0xFF;
+	}
 }
 
 static void	aff_line_croi(t_mlx **mlx, t_position *pos1, t_position *d,
@@ -58,7 +61,7 @@ static void	aff_line_croi(t_mlx **mlx, t_position *pos1, t_position *d,
 	inc1 = 2 * ((*d).y - (*d).x);
 	inc2 = 2 * (*d).y;
 	while (n < (*d).x)
-    {
+	{
 		if (e >= 0)
 		{
 			pos1->y = pos1->y + (*inc).y;
@@ -69,7 +72,7 @@ static void	aff_line_croi(t_mlx **mlx, t_position *pos1, t_position *d,
 		pos1->x = pos1->x + (*inc).x;
 		ft_init_px(&(*mlx), pos1);
 		n = n + 1;
-    }
+	}
 }
 
 static void	aff_line_decroi(t_mlx **mlx, t_position *pos1, t_position *d,
@@ -86,7 +89,7 @@ static void	aff_line_decroi(t_mlx **mlx, t_position *pos1, t_position *d,
 	inc1 = 2 * ((*d).x - (*d).y);
 	inc2 = 2 * (*d).x;
 	while (n < (*d).y)
-    {
+	{
 		if (e >= 0)
 		{
 			pos1->x = pos1->x + (*inc).x;
@@ -97,7 +100,7 @@ static void	aff_line_decroi(t_mlx **mlx, t_position *pos1, t_position *d,
 		pos1->y = pos1->y + (*inc).y;
 		ft_init_px(&(*mlx), pos1);
 		n = n + 1;
-    }
+	}
 }
 
 int			aff_line(t_mlx **mlx, t_position pos1, t_position pos2)

@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 11:42:29 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/23 14:44:43 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/26 09:29:57 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct	s_position
 typedef struct	s_map
 {
   int				**tab;
-  int				line;
-  int				column;
+  size_t			line;
+  size_t			column;
 }				t_map;
 
 typedef struct	s_draw
@@ -60,7 +60,8 @@ int				ft_parsing(char *str);
 int				ft_fdf(t_map *map);
 int				ft_abs(int n);
 int				ft_max(t_map *map);
-int				ft_atoi_spe(char *str, int pos);
+int				ft_min(t_map *map);
+int				ft_atoi_spe(char *str, int n);
 int				ft_around(unsigned int a, unsigned int b);
 int				aff_line(t_mlx **mlx, t_position pos1, t_position pos2);
 t_mlx			*ft_init_mlx(void);

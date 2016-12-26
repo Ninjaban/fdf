@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 11:38:52 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/23 14:33:42 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/26 09:50:14 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,41 @@
 
 static int	ft_fdf_horizon(t_map *map, t_mlx **mlx, t_draw *draw)
 {
-	int		x;
-	int		y;
+	size_t	x;
+	size_t	y;
 
 	y = 0;
 	while (y < map->line)
-    {
-		x = -1;
-		while (++x < map->column - 1)
+	{
+		x = 0;
+		while (x < map->column - 1)
+		{
 			if (aff_line(&(*mlx), draw->tab[y][x], draw->tab[y][x + 1]) == 1)
 				return (-1);
+			x = x + 1;
+		}
 		y = y + 1;
-    }
+	}
 	return (0);
 }
 
 static int	ft_fdf_vertical(t_map *map, t_mlx **mlx, t_draw *draw)
 {
-	int		x;
-	int		y;
+	size_t	x;
+	size_t	y;
 
 	y = 0;
 	while (y < map->line - 1)
-    {
-		x = -1;
-		while (++x < map->column)
+	{
+		x = 0;
+		while (x < map->column)
+		{
 			if (aff_line(&(*mlx), draw->tab[y][x], draw->tab[y + 1][x]) == 1)
 				return (-1);
+			x = x + 1;
+		}
 		y = y + 1;
-    }
+	}
 	return (0);
 }
 
