@@ -6,13 +6,14 @@
 #    By: jcarra <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/28 08:57:25 by jcarra            #+#    #+#              #
-#    Updated: 2016/12/26 10:12:50 by jcarra           ###   ########.fr        #
+#    Updated: 2016/12/27 12:32:24 by jcarra           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME		=	fdf
 
-SRC			=	ft_fdf.c \
+SRC			=	ft_color.c \
+				ft_fdf.c \
 				ft_function.c \
 				ft_draw.c \
 				ft_init.c \

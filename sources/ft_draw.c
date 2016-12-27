@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 11:39:00 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/26 09:54:56 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/27 12:50:43 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void		ft_init_draw_function(t_draw **draw, t_map *map,
 		{
 			(*draw)->tab[y2][x2].x = x1;
 			(*draw)->tab[y2][x2].y = y1 - (map->tab[y2][x2] * (*draw)->incup);
+			(*draw)->tab[y2][x2].height = map->tab[y2][x2];
 			x1 = x1 + incx;
 		}
 		y1 = y1 - incy;
@@ -41,9 +42,24 @@ static void	ft_init_px(t_mlx **mlx, t_position *pos1)
 {
 	if (pos1->x < WIDTH && pos1->y < HEIGHT)
 	{
-		(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 2] = COLOR_R;
-		(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 1] = COLOR_G;
-		(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4)] = COLOR_B;
+		if (pos1->height > COLOR_5)
+		{
+			(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 2] = COLOR_R;
+			(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 1] = COLOR_G;
+			(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4)] = COLOR_B;
+		}
+		else if (pos1->height <= COLOR_0)
+			ft_color_0(&(*mlx), &(*pos1));
+		else if (pos1->height <= COLOR_1)
+			ft_color_1(&(*mlx), &(*pos1));
+		else if (pos1->height <= COLOR_2)
+			ft_color_2(&(*mlx), &(*pos1));
+		else if (pos1->height <= COLOR_3)
+			ft_color_3(&(*mlx), &(*pos1));
+		else if (pos1->height <= COLOR_4)
+			ft_color_4(&(*mlx), &(*pos1));
+		else if (pos1->height <= COLOR_5)
+			ft_color_5(&(*mlx), &(*pos1));
 	}
 }
 
