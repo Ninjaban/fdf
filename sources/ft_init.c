@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/28 09:10:05 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/26 09:52:18 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/27 11:39:40 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_draw		*ft_init_draw(t_map *map)
 			return (NULL);
 	incx = (WIDTH - (WIDTH * 4 / 100)) / (map->column + map->line - 1);
 	incy = (HEIGHT - (HEIGHT * 20 / 100)) / map->line;
-	draw->incup = (HEIGHT * 18 / 100) / ft_max(map);
+	draw->incup = (HEIGHT * 18 / 100) / ((ft_max(map) > 0) ? ft_max(map) : 1);
 	ft_init_draw_function(&draw, map, incx, incy);
 	return (draw);
 }

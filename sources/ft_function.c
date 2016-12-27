@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 11:39:07 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/26 09:51:00 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/27 11:37:33 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,6 @@ int			ft_abs(int n)
 		return (n);
 	else
 		return (-n);
-}
-
-int			ft_around(unsigned int a, unsigned int b)
-{
-	if (b % 2 == 0)
-	{
-		if (a % b >= b / 2)
-			return (a / b + 1);
-		else
-			return (a / b);
-	}
-	else
-	{
-		if (a % b > b / 2)
-			return (a / b + 1);
-		else
-			return (a / b);
-	}
 }
 
 int			ft_atoi_spe(char *str, int n)
