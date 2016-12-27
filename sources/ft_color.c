@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/27 12:29:40 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/27 12:54:34 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/27 14:43:35 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,3 @@ void		ft_color_4(t_mlx **mlx, t_position *pos1)
 	(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 1] = COLOR_4G;
 	(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4)] = COLOR_4B;
 }
-
-void		ft_color_5(t_mlx **mlx, t_position *pos1)
-{
-	(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 2] = COLOR_5R;
-	(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4) + 1] = COLOR_5G;
-	(*mlx)->val[(pos1->x * 4) + (pos1->y * WIDTH * 4)] = COLOR_5B;
-}
-
-
-
-
-
-
-
-
-
-
