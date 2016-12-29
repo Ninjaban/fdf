@@ -6,7 +6,7 @@
 /*   By: jcarra <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 11:38:52 by jcarra            #+#    #+#             */
-/*   Updated: 2016/12/26 09:50:14 by jcarra           ###   ########.fr       */
+/*   Updated: 2016/12/29 10:58:31 by jcarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int			ft_fdf(t_map *map)
 		return (-1);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	mlx_hook(mlx->win, 2, 3, &ft_hook, NULL);
+	mlx_loop_hook(mlx->mlx, &ft_loop_hook, mlx);
 	mlx_loop(mlx->mlx);
 	return (0);
 }
